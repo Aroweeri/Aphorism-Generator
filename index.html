@@ -200,7 +200,6 @@ input#tb {
 	color:white;
 	vertical-align: middle;
 	width:400px; 
-	height:40px; 
 
 }
 input#tb2 {
@@ -213,7 +212,6 @@ input#tb2 {
 	color:white;
 	vertical-align: middle;
 	width:220px; 
-	height:40px; 
 }
 input#submit {
 	background-color : #0A0A0A;
@@ -225,7 +223,6 @@ input#submit {
 	color:white;
 	vertical-align: middle;
 	width:150px; 
-	height:46px; 
 }
 
 a#language{
@@ -259,8 +256,8 @@ a#language{
 <body>
 	<a href="jp.html" id="language">JP</a>
 	<div id="form">
-		<input type="text" name="tb" id="tb" value="Aphorism Text Here" onclick="this.value='';" onfocus="this.value='';">
-		<input type="text" name="tb2" id="tb2" value="Author" onclick="this.value='';" onfocus="this.value='';">
+		<input type="text" name="tb" id="tb" placeholder="Aphorism Text Here">
+		<input type="text" name="tb2" id="tb2" placeholder="Author">
 		<input type="submit" value="Generate" id="submit" onclick="generate()">
 	</div>
 	<div id="bg">
