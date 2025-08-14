@@ -6,10 +6,10 @@
 <title>Aphorism Generator</title>
 <script>
 function utf8_to_b64(str) {
-    return window.btoa(unescape(encodeURIComponent(str)));
+	return window.btoa(unescape(encodeURIComponent(str)));
 }
 function b64_to_utf8(str) {
-    return decodeURIComponent(escape(window.atob(str)));
+	return decodeURIComponent(escape(window.atob(str)));
 }
 function changetext()
 {
@@ -71,16 +71,16 @@ function generate(){
 	window.location.href = url
 }
 function play() {
-    var audio = document.getElementById('bgm');
-    //var audio = document.getElementById('bgm'); audio.muted = !audio.muted;
-    audio.play();
-    document.getElementById("bg").style.animationPlayState = "running";
-    document.getElementById("fade").style.animationPlayState = "running";
-    document.getElementById("text").style.animationPlayState = "running";
-    document.getElementById("text2").style.animationPlayState = "running";
-    document.getElementById("person").style.animationPlayState = "running";
-    document.getElementById("person2").style.animationPlayState = "running";
-    document.getElementById("glow").style.animationPlayState = "running";
+	var audio = document.getElementById('bgm');
+	//var audio = document.getElementById('bgm'); audio.muted = !audio.muted;
+	audio.play();
+	document.getElementById("bg").style.animationPlayState = "running";
+	document.getElementById("fade").style.animationPlayState = "running";
+	document.getElementById("text").style.animationPlayState = "running";
+	document.getElementById("text2").style.animationPlayState = "running";
+	document.getElementById("person").style.animationPlayState = "running";
+	document.getElementById("person2").style.animationPlayState = "running";
+	document.getElementById("glow").style.animationPlayState = "running";
 }
 </script>
 <style>
@@ -96,10 +96,10 @@ div#bg{
 	top: 50%;
 	left: 50%;
 	margin-right: -50%;
-    opacity:70%;
+	opacity:70%;
 	transform: translate(-50%, -50%);
 	animation: bganim 15s linear forwards;
-    animation-play-state: paused;
+	animation-play-state: paused;
 }
 div#fade{
 	background-color:black;
@@ -112,13 +112,13 @@ div#fade{
 	transform: translate(-50%, -50%);
 	opacity:0;
 	animation: fadeanim 15s linear forwards;
-    animation-play-state: paused;
+	animation-play-state: paused;
 }
 div#text{
 	text-shadow: 0px 0px 15px black;
 	font-size:35px;
 	font-family: "Charm";
-    font-weight: 700;
+	font-weight: 700;
 	text-align: center;
 	color:white;
 	vertical-align: middle;
@@ -131,13 +131,13 @@ div#text{
 	transform: translate(-50%, -50%);
 	opacity: 0;
 	animation: textfadeanim 2s linear 6.25s forwards;
-    animation-play-state: paused;
+	animation-play-state: paused;
 }
 div#text2{
 	text-shadow: 0px 0px 3px rgb(200,200,50);
 	font-size:35px;
 	font-family: "Charm";
-    font-weight: 700;
+	font-weight: 700;
 	text-align: center;
 	color:white;
 	vertical-align: middle;
@@ -150,13 +150,13 @@ div#text2{
 	transform: translate(-50%, -50%);
 	opacity: 0;
 	animation: textfadeanim 2s linear 6.25s forwards;
-    animation-play-state: paused;
+	animation-play-state: paused;
 }
 div#person{
 	text-shadow: 0px 0px 15px black;
 	font-size:35px;
 	font-family: "Charm";
-    font-weight: 700;
+	font-weight: 700;
 	text-align: right;
 	color:white;
 	vertical-align: middle;
@@ -169,13 +169,13 @@ div#person{
 	transform: translate(-50%, -50%);
 	opacity: 0;
 	animation: textfadeanim 2s linear 6.25s forwards;
-    animation-play-state: paused;
+	animation-play-state: paused;
 }
 div#person2{
 	text-shadow: 0px 0px 3px rgb(200,200,50);
 	font-size:35px;
 	font-family: "Charm";
-    font-weight: 700;
+	font-weight: 700;
 	text-align: right;
 	color:white;
 	vertical-align: middle;
@@ -188,7 +188,7 @@ div#person2{
 	transform: translate(-50%, -50%);
 	opacity: 0;
 	animation: textfadeanim 2s linear 6.25s forwards;
-    animation-play-state: paused;
+	animation-play-state: paused;
 }
 div#glow{
 	background-image: url("glow.png");
@@ -202,7 +202,7 @@ div#glow{
 	margin-right: -50%;
 	transform: translate(-50%, -50%);
 	animation: glowanim 5s linear 3.75s forwards;
-    animation-play-state: paused;
+	animation-play-state: paused;
 }
 div#form {
 	position: absolute;
@@ -220,7 +220,7 @@ input#tb {
 	text-shadow: 0px 0px 15px black;
 	font-size:35px;
 	font-family: "Charm";
-    font-weight: 700;
+	font-weight: 700;
 	text-align: center;
 	color:white;
 	vertical-align: middle;
@@ -233,7 +233,7 @@ input#tb2 {
 	text-shadow: 0px 0px 15px black;
 	font-size:35px;
 	font-family: "Charm";
-    font-weight: 700;
+	font-weight: 700;
 	text-align: center;
 	color:white;
 	vertical-align: middle;
@@ -245,7 +245,7 @@ input#submit {
 	text-shadow: 0px 0px 15px black;
 	font-size:35px;
 	font-family: "Charm";
-    font-weight: 700;
+	font-weight: 700;
 	text-align: center;
 	color:white;
 	vertical-align: middle;
@@ -334,7 +334,7 @@ a#language{
 	</div>
 </body>
 <audio id="bgm" controls hidden>
-    <source src="EF_WR002.mp3" type="audio/mp3">
+	<source src="EF_WR002.mp3" type="audio/mp3">
 </audio>
 <a type = "button" onclick="play()"><img alt="Toggle audio" id="play" src="play.png"/></a>
 </html>
