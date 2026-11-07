@@ -66,9 +66,11 @@ function generate(){
 	var tb2 = document.getElementById("tb2");
 	var text2 = tb2.value;
 	var data = utf8_to_b64(text + '\0' + text2).replace(/\=*$/, '');
-
 	url = url + data;
-	window.location.href = url
+	//window.location.href = url
+	window.history.pushState({}, "", url);
+	changetext();
+	play();
 }
 function play() {
 	var audio = document.getElementById('bgm');
@@ -134,12 +136,15 @@ div#text{
 	animation-play-state: paused;
 }
 div#text2{
-	text-shadow: 0px 0px 3px rgb(200,200,50);
+	text-shadow: 0px 0px 20px rgb(255,255,200);
+	color: #fff;
+	text-shadow:
+		0px 0px 5px rgb(220,220,190),
+		0px 0px 10px rgb(180,180,100);
 	font-size:35px;
 	font-family: "Charm";
 	font-weight: 700;
 	text-align: center;
-	color:white;
 	vertical-align: middle;
 	width:520px; 
 	height:320px; 
@@ -293,7 +298,6 @@ a#language{
 </style>
 </head>
 <body>
-	<a href="jp.html" id="language">JP</a>
 	<div id="form">
 		<input type="text" name="tb" id="tb" placeholder="Aphorism Text Here">
 		<input type="text" name="tb2" id="tb2" placeholder="Author">
