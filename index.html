@@ -4,15 +4,18 @@
 <!--Revived by Aroweeri (github.com/aroweeri) after Kazamatsuri went offline.-->
 <head>
 <title>Aphorism Generator</title>
+
 <script>
+
 function utf8_to_b64(str) {
 	return window.btoa(unescape(encodeURIComponent(str)));
 }
+
 function b64_to_utf8(str) {
 	return decodeURIComponent(escape(window.atob(str)));
 }
-function changetext()
-{
+
+function changetext() {
 	var url = window.location.href;
 	var text;
 	var person;
@@ -35,20 +38,18 @@ function changetext()
 			person = parts[1];
 		}
 		
-		//alert(text + " ## " + person);
-
 		document.getElementById("text").innerHTML = "<br> <br> <br> " + text;
 		document.getElementById("text2").innerHTML = "<br> <br> <br> " + text;
 		
 		if (!(text.length>40))
 		{
-			document.getElementById("person").innerHTML = "<br> <br> <br> <br>" + person;
-			document.getElementById("person2").innerHTML = "<br> <br> <br> <br>" + person;
+			document.getElementById("person").innerHTML = "<br> <br> <br> <br>- " + person;
+			document.getElementById("person2").innerHTML = "<br> <br> <br> <br>- " + person;
 		}
 		else
 		{
-			document.getElementById("person").innerHTML = "<br> <br> <br> <br> <br>" + person;
-			document.getElementById("person2").innerHTML = "<br> <br> <br> <br> <br>" + person;
+			document.getElementById("person").innerHTML = "<br> <br> <br> <br> <br>- " + person;
+			document.getElementById("person2").innerHTML = "<br> <br> <br> <br> <br>- " + person;
 		}
 		
 		var tb = document.getElementById("tb");
@@ -59,6 +60,7 @@ function changetext()
 		submit.parentNode.removeChild(submit);
 	}
 }
+
 function generate(){
 	var url = window.location.href + "?";
 	var tb = document.getElementById("tb");
@@ -67,14 +69,13 @@ function generate(){
 	var text2 = tb2.value;
 	var data = utf8_to_b64(text + '\0' + text2).replace(/\=*$/, '');
 	url = url + data;
-	//window.location.href = url
 	window.history.pushState({}, "", url);
 	changetext();
 	play();
 }
+
 function play() {
 	var audio = document.getElementById('bgm');
-	//var audio = document.getElementById('bgm'); audio.muted = !audio.muted;
 	audio.play();
 	document.getElementById("bg").style.animationPlayState = "running";
 	document.getElementById("fade").style.animationPlayState = "running";
@@ -84,13 +85,20 @@ function play() {
 	document.getElementById("person2").style.animationPlayState = "running";
 	document.getElementById("glow").style.animationPlayState = "running";
 }
+
 </script>
+
 <style>
+
 body {
-	background-color:black;
+	background-color:red;
 }
+
+.animation {
+	/*display:none;*/
+}
+
 div#bg{
-	background-color:black;
 	background-image: url("bg.png");
 	width:800px; 
 	height:320px; 
@@ -98,7 +106,7 @@ div#bg{
 	top: 50%;
 	left: 50%;
 	margin-right: -50%;
-	opacity:70%;
+	opacity:100%;
 	transform: translate(-50%, -50%);
 	animation: bganim 15s linear forwards;
 	animation-play-state: paused;
@@ -295,50 +303,59 @@ a#language{
   font-weight: 700;
 }
 
+a#id {
+	text-align:center
+}
+
 </style>
+
 </head>
+
 <body>
+	<audio id="bgm" controls hidden>
+		<source src="EF_WR002.mp3" type="audio/mp3">
+	</audio>
+	<a type="button" id="play" onclick="play()">
+		<img alt="Toggle audio" src="play_icon.png"/>
+	</a>
+
 	<div id="form">
 		<input type="text" name="tb" id="tb" placeholder="Aphorism Text Here">
 		<input type="text" name="tb2" id="tb2" placeholder="Author">
 		<input type="submit" value="Generate" id="submit" onclick="generate()">
 	</div>
-	<div id="bg">
-	</div>
-	<div id="text">	
-	<br>
-	<br>
-	<br>
+
+	<div id="bg" class="animation"/>
+	<div id="text" class="animation">	
+		<br>
+		<br>
+		<br>
 		Even cats fall from poles
 	</div>
-	<div id="text2">	
-	<br>
-	<br>
-	<br>
+	<div id="text2" class="animation">	
+		<br>
+		<br>
+		<br>
 		Even cats fall from poles
 	</div>
-	<div id="person">	
-	<br>
-	<br>
-	<br>
-	<br>
+	<div id="person" class="animation">	
+		<br>
+		<br>
+		<br>
+		<br>
 		Inohara Masato
 	</div>
-	<div id="person2">	
-	<br>
-	<br>
-	<br>
-	<br>
+	<div id="person2" class="animation">	
+		<br>
+		<br>
+		<br>
+		<br>
 		Inohara Masato
 	</div>
-	<body onload="changetext();">
-	<div id="glow">
-	</div>
-	<div id="fade">
-	</div>
+
+	<body class="animation" onload="changetext();">
+	<div id="glow"/ class="animation">
+	<div id="fade"/ class="animation">
 </body>
-<audio id="bgm" controls hidden>
-	<source src="EF_WR002.mp3" type="audio/mp3">
-</audio>
-<a type = "button" onclick="play()"><img alt="Toggle audio" id="play" src="play.png"/></a>
+
 </html>
