@@ -38,23 +38,14 @@ function changetext() {
 			person = parts[1];
 		}
 		
-		document.getElementById("text").innerHTML = "<br> <br> <br> " + text;
+		document.getElementById("text").innerHTML = text;
+		document.getElementById("person").innerHTML = "-" + person;
 		
-		if (!(text.length>40))
-		{
-			document.getElementById("person").innerHTML = "<br> <br> <br> <br>- " + person;
-		}
-		else
-		{
-			document.getElementById("person").innerHTML = "<br> <br> <br> <br> <br>- " + person;
-		}
-		
-		var tb = document.getElementById("tb");
-		var tb2 = document.getElementById("tb2");
-		var submit = document.getElementById("submit");
-		tb.parentNode.removeChild(tb);
-		tb2.parentNode.removeChild(tb2);
-		submit.parentNode.removeChild(submit);
+		var form = document.getElementById("form");
+		form.style.display = "none";
+	} else {
+		var form = document.getElementById("form");
+		form.style.display = "inline";
 	}
 }
 
@@ -73,7 +64,7 @@ function generate(){
 
 function play() {
 	var audio = document.getElementById('bgm');
-	audio.play();
+audio.play();
 	document.getElementById("bg").style.animationPlayState = "running";
 	document.getElementById("fade").style.animationPlayState = "running";
 	document.getElementById("text").style.animationPlayState = "running";
@@ -89,39 +80,31 @@ body {
 	background-color:green;
 }
 
-div#bg{
+#bg{
+	position:absolute;
+	inset:0;
+	width:100%;
+	height:100%;
 	background-image: url("bg.png");
-	width:800px; 
-	height:320px; 
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
+	background-size:cover;
 	animation: bganim 15s linear forwards;
 	animation-play-state: paused;
 }
-div#bg-darkener {
-	width:800px;
-	height:320px;
+#bg-darkener {
 	position:absolute;
-	top:50%;
-	left:50%;
-	margin-right:-50%
-	transform:translate(-50%, -50%);
-	color:rgb(0,0,0);
-	opacity:0.2;
-	z-index:1;
-}
-div#fade{
+	inset:0;
+	width:100%;
+	height:100%;
 	background-color:black;
-	width:800px; 
-	height:320px; 
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
+	opacity:0.2;
+	z-index:0;
+}
+#fade{
+	position:absolute;
+	inset:0;
+	width:100%;
+	height:100%;
+	background-color:black;
 	opacity:0;
 	animation: fadeanim 15s linear forwards;
 	animation-play-state: paused;
@@ -135,49 +118,49 @@ div#fade{
 	vertical-align: middle;
 	position: absolute;
 	opacity: 0;
-	transform: translate(-50%, -50%);
-	animation: textfadeanim 2s linear 6.25s forwards;
+}
+#text{
+	position;absolute;
+	width:100%;
+	text-align: center;
+	animation: textfadeanim 1.5s linear 5.00s forwards;
 	animation-play-state: paused;
 }
-div#text{
-	text-align: center;
-	width:520px; 
-	height:320px; 
-	top: 50%;
-	left: 48%;
-	padding-right: 20px;
-}
-div#person{
+#person{
+	position:absolute;
+	width:100%;
 	text-align: right;
-	width:600px; 
-	height:320px; 
-	top: 50%;
-	left: 55%;
-	padding-right: 400px;
+	animation: textfadeanim 1.5s linear 7.50s forwards;
+	animation-play-state: paused;
 }
-div#glow{
-	background-image: url("glow.png");
-	background-position: -900px -225px;
-	background-repeat: no-repeat;
-	width:800px; 
-	height:320px; 
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
+#glow{
+	position:absolute;
+	height:200%;
+	width:auto;
+	top:-25%;
+	left:0;
+	transform:translateX(-100%);
 	animation: glowanim 5s linear 3.75s forwards;
 	animation-play-state: paused;
 }
-div#form {
-	position: absolute;
-	top: 77%;
-	left: 50%;
-	width:800px; 
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
+#form {
+	width:50%;
+	height:50%;
 	text-align: center;
 	vertical-align: middle;
+	display:none;
+}
+#scene {
+	width:50%;
+	height:50%;
+	aspect-ratio:800/320;
+	position:relative;
+	overflow:hidden;
+}
+
+body {
+	width:100%;
+	height:100%;
 }
 
 .formText {
@@ -191,46 +174,57 @@ div#form {
 	color:white;
 	vertical-align: middle;
 }
-input#tb {
-	width:400px; 
+#tb {
 }
-input#tb2 {
-	width:220px; 
+#tb2 {
 }
-input#submit {
-	width:150px; 
+#submit {
+}
+
+#playButton {
+	position:absolute;
+	inset:0;
+	width:100%;
+	height:100%;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+}
+
+#playImg {
+	animation: buttonfadeanim 1s linear 0s forwards;
+	animation-play-state: paused;
+	width:10%;
 }
 
 @keyframes bganim{
-	0% {background-position: 0px 0px;}
-	100% {background-position: -200px 0px}
+	0% {background-position: 0% 0px}
+	100% {background-position: 100% 0px}
 }
 @keyframes glowanim{
-	0% {background-position: -900px -225px}
-	100% {background-position: 900px -225px}
+	0% {transform:translateX(-100%)}
+	100% {transform:translateX(200%)}
 }
 @keyframes fadeanim{
 	0% {opacity:1;}
-	10% {opacity:1;}
-	25% {opacity:0;}
-	85% {opacity:0;}
+	5% {opacity:1;}
+	20% {opacity:0;}
+	80% {opacity:0;}
 	100% {opacity:1}
 }
 @keyframes textfadeanim{
 	0% {opacity:0}
 	100% {opacity:1}
 }
+@keyframes buttonfadeanim {
+	0% {opacity:1};
+	0% {opacity:0};
+}
 
 @font-face {
   font-family: 'Charm';
   src: url('Charm/Charm-Regular.ttf') format('truetype');
   font-weight: 400;
-}
-
-@font-face {
-  font-family: 'Charm';
-  src: url('Charm/Charm-Bold.ttf') format('truetype');
-  font-weight: 700;
 }
 
 </style>
@@ -241,34 +235,26 @@ input#submit {
 	<audio id="bgm" controls hidden>
 		<source src="EF_WR002.mp3" type="audio/mp3">
 	</audio>
-	<a type="button" id="play" onclick="play()">
-		<img alt="Toggle audio" src="play_icon.png"/>
-	</a>
 
+	<div id="scene">
+
+		<div id="bg"></div>
+		<div id="bg-darkener"></div>
+		<div id="text" class="glowText"></div>
+		<div id="person" class="glowText"></div>
+		<img id="glow" src="glow.png"/>
+		<div id="fade"></div>
+		<a type="button" id="playButton" onclick="play()">
+			<img src="play_icon.png" id="playImg"/>
+		</a>
+
+	</div>
 	<div id="form">
 		<input type="text" name="tb" id="tb" class="formText" placeholder="Aphorism Text Here">
 		<input type="text" name="tb2" id="tb2" class="formText" placeholder="Author">
 		<input type="submit" value="Generate" class="formText" id="submit" onclick="generate()">
 	</div>
 
-	<div id="bg"/>
-	<!--<div id="bg-darkener"/>-->
-	<div id="text" class="glowText">	
-		<br>
-		<br>
-		<br>
-		Even cats fall from poles
-	</div>
-	<div id="person" class="glowText">	
-		<br>
-		<br>
-		<br>
-		<br>
-		Inohara Masato
-	</div>
-
-	<div id="glow"/>
-	<div id="fade"/> 
 </body>
 
 </html>
