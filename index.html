@@ -39,17 +39,14 @@ function changetext() {
 		}
 		
 		document.getElementById("text").innerHTML = "<br> <br> <br> " + text;
-		document.getElementById("text2").innerHTML = "<br> <br> <br> " + text;
 		
 		if (!(text.length>40))
 		{
 			document.getElementById("person").innerHTML = "<br> <br> <br> <br>- " + person;
-			document.getElementById("person2").innerHTML = "<br> <br> <br> <br>- " + person;
 		}
 		else
 		{
 			document.getElementById("person").innerHTML = "<br> <br> <br> <br> <br>- " + person;
-			document.getElementById("person2").innerHTML = "<br> <br> <br> <br> <br>- " + person;
 		}
 		
 		var tb = document.getElementById("tb");
@@ -80,9 +77,7 @@ function play() {
 	document.getElementById("bg").style.animationPlayState = "running";
 	document.getElementById("fade").style.animationPlayState = "running";
 	document.getElementById("text").style.animationPlayState = "running";
-	document.getElementById("text2").style.animationPlayState = "running";
 	document.getElementById("person").style.animationPlayState = "running";
-	document.getElementById("person2").style.animationPlayState = "running";
 	document.getElementById("glow").style.animationPlayState = "running";
 }
 
@@ -91,11 +86,7 @@ function play() {
 <style>
 
 body {
-	background-color:red;
-}
-
-.animation {
-	/*display:none;*/
+	background-color:green;
 }
 
 div#bg{
@@ -106,10 +97,21 @@ div#bg{
 	top: 50%;
 	left: 50%;
 	margin-right: -50%;
-	opacity:100%;
 	transform: translate(-50%, -50%);
 	animation: bganim 15s linear forwards;
 	animation-play-state: paused;
+}
+div#bg-darkener {
+	width:800px;
+	height:320px;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-right:-50%
+	transform:translate(-50%, -50%);
+	color:rgb(0,0,0);
+	opacity:0.2;
+	z-index:1;
 }
 div#fade{
 	background-color:black;
@@ -124,84 +126,34 @@ div#fade{
 	animation: fadeanim 15s linear forwards;
 	animation-play-state: paused;
 }
-div#text{
-	text-shadow: 0px 0px 15px black;
+.glowText {
+	text-shadow: 0px 0px 5px rgb(222,222,200);
 	font-size:35px;
 	font-family: "Charm";
 	font-weight: 700;
-	text-align: center;
-	color:white;
+	color:rgb(255,255,230);
 	vertical-align: middle;
-	width:520px; 
-	height:320px; 
 	position: absolute;
-	top: 50%;
-	left: 48%;
-	padding-right: 20px;
-	transform: translate(-50%, -50%);
 	opacity: 0;
+	transform: translate(-50%, -50%);
 	animation: textfadeanim 2s linear 6.25s forwards;
 	animation-play-state: paused;
 }
-div#text2{
-	text-shadow: 0px 0px 20px rgb(255,255,200);
-	color: #fff;
-	text-shadow:
-		0px 0px 5px rgb(220,220,190),
-		0px 0px 10px rgb(180,180,100);
-	font-size:35px;
-	font-family: "Charm";
-	font-weight: 700;
+div#text{
 	text-align: center;
-	vertical-align: middle;
 	width:520px; 
 	height:320px; 
-	position: absolute;
 	top: 50%;
 	left: 48%;
 	padding-right: 20px;
-	transform: translate(-50%, -50%);
-	opacity: 0;
-	animation: textfadeanim 2s linear 6.25s forwards;
-	animation-play-state: paused;
 }
 div#person{
-	text-shadow: 0px 0px 15px black;
-	font-size:35px;
-	font-family: "Charm";
-	font-weight: 700;
 	text-align: right;
-	color:white;
-	vertical-align: middle;
 	width:600px; 
 	height:320px; 
-	position: absolute;
 	top: 50%;
 	left: 55%;
 	padding-right: 400px;
-	transform: translate(-50%, -50%);
-	opacity: 0;
-	animation: textfadeanim 2s linear 6.25s forwards;
-	animation-play-state: paused;
-}
-div#person2{
-	text-shadow: 0px 0px 3px rgb(200,200,50);
-	font-size:35px;
-	font-family: "Charm";
-	font-weight: 700;
-	text-align: right;
-	color:white;
-	vertical-align: middle;
-	width:600px; 
-	height:320px; 
-	position: absolute;
-	top: 50%;
-	left: 55%;
-	padding-right: 400px;
-	transform: translate(-50%, -50%);
-	opacity: 0;
-	animation: textfadeanim 2s linear 6.25s forwards;
-	animation-play-state: paused;
 }
 div#glow{
 	background-image: url("glow.png");
@@ -227,7 +179,8 @@ div#form {
 	text-align: center;
 	vertical-align: middle;
 }
-input#tb {
+
+.formText {
 	background-color : #0A0A0A;
 	border: 1px solid double #707070;
 	text-shadow: 0px 0px 15px black;
@@ -237,38 +190,15 @@ input#tb {
 	text-align: center;
 	color:white;
 	vertical-align: middle;
+}
+input#tb {
 	width:400px; 
-
 }
 input#tb2 {
-	background-color : #0A0A0A;
-	border: 1px solid double #707070;
-	text-shadow: 0px 0px 15px black;
-	font-size:35px;
-	font-family: "Charm";
-	font-weight: 700;
-	text-align: center;
-	color:white;
-	vertical-align: middle;
 	width:220px; 
 }
 input#submit {
-	background-color : #0A0A0A;
-	border: 1px solid double #707070;
-	text-shadow: 0px 0px 15px black;
-	font-size:35px;
-	font-family: "Charm";
-	font-weight: 700;
-	text-align: center;
-	color:white;
-	vertical-align: middle;
 	width:150px; 
-}
-
-a#language{
-	font-size:16px;
-	font-family: "Arial";
-	color:white;
 }
 
 @keyframes bganim{
@@ -303,15 +233,11 @@ a#language{
   font-weight: 700;
 }
 
-a#id {
-	text-align:center
-}
-
 </style>
 
 </head>
 
-<body>
+<body onload="changetext();">
 	<audio id="bgm" controls hidden>
 		<source src="EF_WR002.mp3" type="audio/mp3">
 	</audio>
@@ -320,32 +246,20 @@ a#id {
 	</a>
 
 	<div id="form">
-		<input type="text" name="tb" id="tb" placeholder="Aphorism Text Here">
-		<input type="text" name="tb2" id="tb2" placeholder="Author">
-		<input type="submit" value="Generate" id="submit" onclick="generate()">
+		<input type="text" name="tb" id="tb" class="formText" placeholder="Aphorism Text Here">
+		<input type="text" name="tb2" id="tb2" class="formText" placeholder="Author">
+		<input type="submit" value="Generate" class="formText" id="submit" onclick="generate()">
 	</div>
 
-	<div id="bg" class="animation"/>
-	<div id="text" class="animation">	
+	<div id="bg"/>
+	<!--<div id="bg-darkener"/>-->
+	<div id="text" class="glowText">	
 		<br>
 		<br>
 		<br>
 		Even cats fall from poles
 	</div>
-	<div id="text2" class="animation">	
-		<br>
-		<br>
-		<br>
-		Even cats fall from poles
-	</div>
-	<div id="person" class="animation">	
-		<br>
-		<br>
-		<br>
-		<br>
-		Inohara Masato
-	</div>
-	<div id="person2" class="animation">	
+	<div id="person" class="glowText">	
 		<br>
 		<br>
 		<br>
@@ -353,9 +267,8 @@ a#id {
 		Inohara Masato
 	</div>
 
-	<body class="animation" onload="changetext();">
-	<div id="glow"/ class="animation">
-	<div id="fade"/ class="animation">
+	<div id="glow"/>
+	<div id="fade"/> 
 </body>
 
 </html>
