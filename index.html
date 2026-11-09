@@ -64,12 +64,40 @@ function generate(){
 
 function play() {
 	var audio = document.getElementById('bgm');
-audio.play();
+	audio.load();
+	audio.play();
 	document.getElementById("bg").style.animationPlayState = "running";
 	document.getElementById("fade").style.animationPlayState = "running";
 	document.getElementById("text").style.animationPlayState = "running";
 	document.getElementById("person").style.animationPlayState = "running";
 	document.getElementById("glow").style.animationPlayState = "running";
+	document.getElementById("playImg").style.opacity = 0;
+	
+	//disable button until later
+	document.getElementById("playButton").disabled=true;
+	document.getElementById("playButton").style.cursor="default";
+
+	const element = document.getElementById("bg");
+	element.addEventListener("animationend", (event) => {
+		resetAllAnimations();
+		document.getElementById("playImg").style.opacity = 1;
+		document.getElementById("playButton").disabled=false;
+		document.getElementById("playButton").style.cursor="pointer";
+	});
+}
+
+function resetAllAnimations() {
+	resetAnimation(document.getElementById("bg"));
+	resetAnimation(document.getElementById("fade"));
+	resetAnimation(document.getElementById("text"));
+	resetAnimation(document.getElementById("person"));
+	resetAnimation(document.getElementById("glow"));
+}
+
+function resetAnimation(element) {
+	element.style.animation = "none";
+	element.offsetHeight; // Force reflow
+	element.style.animation = "";
 }
 
 </script>
@@ -87,7 +115,7 @@ body {
 	height:100%;
 	background-image: url("bg.png");
 	background-size:cover;
-	animation: bganim 15s linear forwards;
+	animation: bganim 17s linear forwards;
 	animation-play-state: paused;
 }
 #bg-darkener {
@@ -123,14 +151,14 @@ body {
 	position;absolute;
 	width:100%;
 	text-align: center;
-	animation: textfadeanim 1.5s linear 5.00s forwards;
+	animation: fadeinanim 1.5s linear 5.00s forwards;
 	animation-play-state: paused;
 }
 #person{
 	position:absolute;
 	width:100%;
 	text-align: right;
-	animation: textfadeanim 1.5s linear 7.50s forwards;
+	animation: fadeinanim 1.5s linear 7.50s forwards;
 	animation-play-state: paused;
 }
 #glow{
@@ -155,12 +183,16 @@ body {
 	height:50%;
 	aspect-ratio:800/320;
 	position:relative;
+	align-items:center;
+	justify-content:center;
 	overflow:hidden;
 }
 
 body {
 	width:100%;
 	height:100%;
+	display:flex;
+
 }
 
 .formText {
@@ -189,11 +221,13 @@ body {
 	display:flex;
 	align-items:center;
 	justify-content:center;
+	background:none;
+	border:none;
+	padding:0;
+	cursor:pointer;
 }
 
 #playImg {
-	animation: buttonfadeanim 1s linear 0s forwards;
-	animation-play-state: paused;
 	width:10%;
 }
 
@@ -212,13 +246,13 @@ body {
 	80% {opacity:0;}
 	100% {opacity:1}
 }
-@keyframes textfadeanim{
-	0% {opacity:0}
-	100% {opacity:1}
-}
-@keyframes buttonfadeanim {
-	0% {opacity:1};
+@keyframes fadeinanim {
 	0% {opacity:0};
+	100% {opacity:1};
+}
+@keyframes fadeoutanim {
+	0% {opacity:1};
+	100% {opacity:0};
 }
 
 @font-face {
@@ -233,7 +267,7 @@ body {
 
 <body onload="changetext();">
 	<audio id="bgm" controls hidden>
-		<source src="EF_WR002.mp3" type="audio/mp3">
+		<source src="EF_WR002_normalized.mp3" type="audio/mp3">
 	</audio>
 
 	<div id="scene">
@@ -244,9 +278,9 @@ body {
 		<div id="person" class="glowText"></div>
 		<img id="glow" src="glow.png"/>
 		<div id="fade"></div>
-		<a type="button" id="playButton" onclick="play()">
+		<button type="button" id="playButton" onclick="play()">
 			<img src="play_icon.png" id="playImg"/>
-		</a>
+		</button>
 
 	</div>
 	<div id="form">
