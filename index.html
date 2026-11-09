@@ -143,19 +143,14 @@ body {
 	font-family: "Charm";
 	font-weight: 700;
 	color:rgb(255,255,230);
-	vertical-align: middle;
-	position: absolute;
 	opacity: 0;
 }
 #text{
-	position;absolute;
 	width:100%;
-	text-align: center;
 	animation: fadeinanim 1.5s linear 5.00s forwards;
 	animation-play-state: paused;
 }
 #person{
-	position:absolute;
 	width:100%;
 	text-align: right;
 	animation: fadeinanim 1.5s linear 7.50s forwards;
@@ -261,6 +256,19 @@ body {
   font-weight: 400;
 }
 
+#textDiv {
+	position:absolute;
+	inset:0;
+	width:100%;
+	height:100%;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	flex-direction: column;
+	padding:2%;
+	box-sizing: border-box;
+}
+
 </style>
 
 </head>
@@ -274,8 +282,10 @@ body {
 
 		<div id="bg"></div>
 		<div id="bg-darkener"></div>
-		<div id="text" class="glowText"></div>
-		<div id="person" class="glowText"></div>
+		<div id="textDiv">
+			<div id="text" class="glowText"></div>
+			<div id="person" class="glowText"></div>
+		</div>
 		<img id="glow" src="glow.png"/>
 		<div id="fade"></div>
 		<button type="button" id="playButton" onclick="play()">
