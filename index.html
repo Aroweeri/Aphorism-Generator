@@ -26,9 +26,13 @@ function changetext() {
 		
 		var form = document.getElementById("form");
 		form.style.display = "none";
+		var scene = document.getElementById("scene");
+		scene.style.display = "flex";
 	} else {
 		var form = document.getElementById("form");
 		form.style.display = "inline";
+		var scene = document.getElementById("scene");
+		scene.style.display = "none";
 	}
 }
 
@@ -170,7 +174,7 @@ function toggleSound() {
 	width: 100%;
     height: 84vh;
 	position:relative;
-	display:flex;
+	display:none; /* later set to flex on page load */
 	align-items:center;
 	justify-content:center;
 	overflow:hidden;
