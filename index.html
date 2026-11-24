@@ -210,8 +210,8 @@ body {
 }
 
 @keyframes bganim{
-	0% {background-position: 0% 0px}
-	100% {background-position: 100% 0px}
+	0% {background-position: 0%}
+	100% {background-position: 100%}
 }
 @keyframes glowanim{
 	0% {transform:translateX(-100%)}
@@ -247,6 +247,7 @@ body {
 	justify-content:center;
 	flex-direction: column;
 	box-sizing: border-box;
+	gap:5vw;
 }
 
 h1 {
@@ -295,10 +296,6 @@ p {
 	flex-direction:column;
 }
 
-#textDivSpacer {
-	height:5vw;
-}
-
 </style>
 
 </head>
@@ -319,7 +316,6 @@ p {
 			<div id="bg-darkener"></div>
 			<div id="textDiv">
 				<div id="text" class="glowText"></div>
-				<div id="textDivSpacer"></div>
 				<div id="person" class="glowText"></div>
 			</div>
 			<img id="glow" src="glow_yellow.png"/>
