@@ -320,6 +320,20 @@ a {
 	text-underline-offset: .22em;
 }
 
+.mobile {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        display: block;
+    }
+}
+
 </style>
 
 </head>
@@ -332,7 +346,8 @@ a {
 	<div id="mainPage">
 		<div id="header">
 			<a href="index.html" id="title" style="text-decoration:none">
-				<h1>Aphorism for you</h1>
+				<h1 class="desktop">Aphorism for you</h1>
+				<h1 class="mobile">Aphorism4U</h1>
 			</a>
 			<a href="index.html">
 				<p id="createLink">Make an Aphorism</p>
