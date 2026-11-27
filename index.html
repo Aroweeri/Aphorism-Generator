@@ -5,6 +5,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aphorism Generator</title>
+<link rel="icon" href="favicon.png" type="image/png">
 
 <script src="lz-string.min.js"></script>
 <script>
@@ -104,6 +105,22 @@ function toggleSound() {
 		document.getElementById("bgm").muted = true;
 		document.getElementById("soundImg").src = "sound-off.svg";
 	}
+}
+
+async function copyLink() {
+    try {
+        await navigator.clipboard.writeText(window.location.href);
+
+        const hint = document.getElementById("copyHint");
+		hint.style.display = "inline";
+
+        setTimeout(() => {
+			hint.style.display = "none";
+        }, 2000);
+
+    } catch (err) {
+        console.error("Failed to copy URL:", err);
+    }
 }
 
 </script>
@@ -282,22 +299,44 @@ p {
 	font-size:1rem;
 }
 
+#copyHint {
+	color:white;
+	display:none;
+}
+
 #title {
 	color:white;
 	margin-left:1rem;
 }
 
 #soundButton {
-	position:absolute;
-    bottom: 2vmax;
-    right: 2vmax;
 	background:none;
 	border:none;
 	padding:0;
 	cursor:pointer;
 }
 
+#copyButton {
+	background:none;
+	border:none;
+	padding:0;
+	cursor:pointer;
+}
+
+#controls {
+	display:flex;
+	position:absolute;
+	bottom: 2vmax;
+	right: 2vmax;
+	gap:1rem;
+}
+
 #soundImg {
+	filter: invert(1);
+	width:3rem;
+}
+
+#copyImg {
 	filter: invert(1);
 	width:3rem;
 }
@@ -307,6 +346,16 @@ p {
 	color:white;
 	text-align:center;
 	margin-right:1rem;
+}
+
+#githubLink {
+	width:3rem;
+}
+
+#rightNav {
+	margin-right:0.5rem;
+	display:flex;
+	align-items:center;
 }
 
 #header {
@@ -346,6 +395,7 @@ a {
 
 </style>
 
+
 </head>
 
 <body onload="changetext();">
@@ -359,9 +409,14 @@ a {
 				<h1 class="desktop">Aphorism for you</h1>
 				<h1 class="mobile">Aphorism4U</h1>
 			</a>
-			<a href="index.html">
-				<p id="createLink">Make an Aphorism</p>
-			</a>
+			<div id="rightNav">
+				<a href="index.html">
+					<p id="createLink">Make an Aphorism</p>
+				</a>
+				<a href="http://www.github.com/aroweeri/Aphorism-Generator">
+					<img id="githubLink" src="GitHub_Invertocat_White_Clearspace.svg">
+				</a>
+			</div>
 		</div>
 
 		<div id="scene">
@@ -376,9 +431,15 @@ a {
 			<button type="button" id="playButton" onclick="play()">
 				<img src="play_icon.png" id="playImg"/>
 			</button>
-			<button type="button" id="soundButton" onclick="toggleSound()">
-				<img src="sound-on.svg" id="soundImg"/>
-			</button>
+			<div id="controls">
+				<p id="copyHint">Link Copied!</p>
+				<button type="button" id="copyButton" onclick="copyLink()">
+					<img src="fluent--clipboard-link-20-regular.svg" id="copyImg"/>
+				</button>
+				<button type="button" id="soundButton" onclick="toggleSound()">
+					<img src="sound-on.svg" id="soundImg"/>
+				</button>
+			</div>
 		</div>
 		
 		<div id="form">
