@@ -29,11 +29,15 @@ function changetext() {
 		form.style.display = "none";
 		var scene = document.getElementById("scene");
 		scene.style.display = "flex";
+		var link = document.getElementById("createLink");
+		link.style.display = "inline";
 	} else {
 		var form = document.getElementById("form");
-		form.style.display = "inline";
+		form.style.display = "flex";
 		var scene = document.getElementById("scene");
 		scene.style.display = "none";
+		var link = document.getElementById("createLink");
+		link.style.display = "none";
 	}
 }
 
@@ -165,11 +169,13 @@ function toggleSound() {
 	animation-play-state: paused;
 }
 #form {
-	width:50%;
-	height:50%;
+	margin-top:1rem;
 	text-align: center;
 	vertical-align: middle;
 	display:none;
+	align-items:center;
+	gap:1rem;
+	flex-direction:column;
 }
 #scene {
 	flex:1;
@@ -203,10 +209,14 @@ body {
 	vertical-align: middle;
 }
 #tb {
+	width:clamp(40vw, 50rem ,90vw);
+	resize:vertical;
 }
 #tb2 {
+	width:clamp(40vw, 50rem ,90vw);
 }
 #submit {
+	width:clamp(40vw, 50rem ,90vw);
 }
 
 #playButton {
@@ -293,6 +303,7 @@ p {
 }
 
 #createLink {
+	display:none;
 	color:white;
 	text-align:center;
 	margin-right:1rem;
@@ -371,7 +382,7 @@ a {
 		</div>
 		
 		<div id="form">
-			<input type="text" name="tb" id="tb" class="formText" placeholder="What Was Said?">
+			<textarea rows="4" id="tb" class="formText" placeholder="What Was Said?"></textarea>
 			<input type="text" name="tb2" id="tb2" class="formText" placeholder="Who Said It?">
 			<input type="submit" value="Generate" class="formText" id="submit" onclick="generate()">
 		</div>
