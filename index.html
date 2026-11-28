@@ -335,6 +335,7 @@ p {
 
 #controls {
 	display:flex;
+	align-items:center;
 	position:absolute;
 	bottom: 1vmax;
 	right: 2vmax;
@@ -343,12 +344,12 @@ p {
 
 #soundImg {
 	filter: invert(1);
-	width:3rem;
+	width:clamp(2rem, 3vmax, 3rem);
 }
 
 #copyImg {
 	filter: invert(1);
-	width:3rem;
+	width:clamp(2rem, 3vmax, 3rem);
 }
 
 #createLink {
@@ -459,7 +460,7 @@ a {
 				<img src="play_icon.png" id="playImg"/>
 			</button>
 			<div id="controls">
-				<p id="copyHint">Link Copied!</p>
+				<p id="copyHint" style="margin:0;text-align:center;">Link Copied!</p>
 				<button type="button" id="copyButton" onclick="copyLink()">
 					<img src="fluent--clipboard-link-20-regular.svg" id="copyImg"/>
 				</button>
