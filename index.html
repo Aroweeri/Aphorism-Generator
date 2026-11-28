@@ -84,6 +84,10 @@ document.addEventListener("DOMContentLoaded", function() {
 	document.getElementById("title").addEventListener("click", function() {
 		resetPage();
 	});
+
+	var bgm = document.getElementById("bgm");
+	var volume = document.getElementById("volume");
+	bgm.volume = volume.value;
 });
 
 function play() {
@@ -150,6 +154,16 @@ async function copyLink() {
         console.error("Failed to copy URL:", err);
     }
 }
+
+function updateVolume() {
+	var bgm = document.getElementById("bgm");
+	var volume = document.getElementById("volume");
+	bgm.volume = volume.value;
+	volume.addEventListener("input", () => {
+		bgm.volume = volume.value;
+	});
+}
+
 
 </script>
 
@@ -432,7 +446,8 @@ a {
 </head>
 
 <body onload="changetext();">
-	<audio id="bgm" controls hidden>
+
+	<audio id="bgm" hidden>
 		<source src="EF_WR002_normalized.mp3" type="audio/mp3">
 	</audio>
 
@@ -467,6 +482,7 @@ a {
 				<button type="button" id="soundButton" onclick="toggleSound()">
 					<img src="sound-on.svg" id="soundImg"/>
 				</button>
+				<input type="range" id="volume" min="0" max="1" step="0.01" value="0.5" oninput="updateVolume()">
 			</div>
 		</div>
 
