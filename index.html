@@ -25,14 +25,16 @@ function changetext() {
 		
 		document.getElementById("text").innerHTML = text;
 		document.getElementById("person").innerHTML = "-" + person;
-		
+
 		document.getElementById("form").style.display = "none";
 		document.getElementById("scene").style.display="flex";
 		document.getElementById("createLink").style.display="inline";
+		document.getElementById("main").style.minHeight="100dvh";
 	} else {
 		document.getElementById("form").style.display="flex";
 		document.getElementById("scene").style.display="none";
 		document.getElementById("createLink").style.display="none";
+		document.getElementById("main").style.minHeight="0";
 	}
 }
 
@@ -221,25 +223,6 @@ async function copyLink() {
 	gap:1rem;
 	flex-direction:column;
 }
-#scene {
-	flex:1;
-	min-height:0;
-	width: 100%;
-	position:relative;
-	display:none; /* later set to flex on page load */
-	align-items:center;
-	justify-content:center;
-	overflow:hidden;
-}
-
-body {
-	background-color:black;
-	display:flex;
-	flex-direction: column;
-	align-items:stretch;
-	justify-content:center;
-	margin:0;
-}
 
 .formText {
 	background-color : #0A0A0A;
@@ -353,7 +336,7 @@ p {
 #controls {
 	display:flex;
 	position:absolute;
-	bottom: 2vmax;
+	bottom: 1vmax;
 	right: 2vmax;
 	gap:1rem;
 }
@@ -385,7 +368,7 @@ p {
 	align-items:center;
 }
 
-#header {
+header {
 	background-color:#1c1c1c;
 	width:100%;
 	display:flex;
@@ -394,7 +377,7 @@ p {
 	gap:1rem;
 }
 
-#footer {
+footer {
 	background-color:#1c1c1c;
 	width:100%;
 	display:flex;
@@ -403,10 +386,29 @@ p {
 	gap:1rem;
 }
 
-#mainPage {
-	height:100dvh;
+body {
+	min-height:100dvh;
+	margin:0;
+	display:flex;
+	flex-direction: column;
+	background-color:black;
+}
+
+main {
 	display:flex;
 	flex-direction:column;
+	flex:1;
+	min-height:100dvh;
+}
+
+#scene {
+	flex:1;
+	width: 100%;
+	position:relative;
+	display:none; /* later set to flex on page load */
+	align-items:center;
+	justify-content:center;
+	overflow:hidden;
 }
 
 a {
@@ -439,8 +441,8 @@ a {
 		<source src="EF_WR002_normalized.mp3" type="audio/mp3">
 	</audio>
 
-	<div id="mainPage">
-		<div id="header">
+	<main id="main">
+		<header>
 			<a href="index.html" id="title" style="text-decoration:none">
 				<h1 class="desktop">Aphorism for you</h1>
 				<h1 class="mobile">Aphorism4U</h1>
@@ -450,7 +452,7 @@ a {
 					<p id="createLink">Make an Aphorism</p>
 				</a>
 			</div>
-		</div>
+		</header>
 
 		<div id="scene">
 			<div id="bg"></div>
@@ -475,23 +477,24 @@ a {
 			</div>
 		</div>
 
-		
 		<div id="form">
 			<textarea rows="4" id="tb" class="formText" placeholder="What Was Said?"></textarea>
 			<input type="text" name="tb2" id="tb2" class="formText" placeholder="Who Said It?">
 			<input type="submit" value="Generate" class="formText" id="submit" onclick="generate()">
 		</div>
+	</main>
 
-		<div id="footer">
-			<a href="http://www.github.com/aroweeri/Aphorism-Generator">
-				<p>github</p>
-			</a>
-			<a href="https://web.archive.org/web/20250725155423/https://kazamatsuri.org/">
-				<p>kazamatsuri</p>
-			</a>
-		</div>
+		
 
-	</div>
+	<footer>
+		<a href="http://www.github.com/aroweeri/Aphorism-Generator">
+			<p>github</p>
+		</a>
+		<a href="https://web.archive.org/web/20250725155423/https://kazamatsuri.org/">
+			<p>kazamatsuri</p>
+		</a>
+	</footer>
+
 
 </body>
 
