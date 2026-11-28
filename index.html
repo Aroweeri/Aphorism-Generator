@@ -26,19 +26,13 @@ function changetext() {
 		document.getElementById("text").innerHTML = text;
 		document.getElementById("person").innerHTML = "-" + person;
 		
-		var form = document.getElementById("form");
-		form.style.display = "none";
-		var scene = document.getElementById("scene");
-		scene.style.display = "flex";
-		var link = document.getElementById("createLink");
-		link.style.display = "inline";
+		document.getElementById("form").style.display = "none";
+		document.getElementById("scene").style.display="flex";
+		document.getElementById("createLink").style.display="inline";
 	} else {
-		var form = document.getElementById("form");
-		form.style.display = "flex";
-		var scene = document.getElementById("scene");
-		scene.style.display = "none";
-		var link = document.getElementById("createLink");
-		link.style.display = "none";
+		document.getElementById("form").style.display="flex";
+		document.getElementById("scene").style.display="none";
+		document.getElementById("createLink").style.display="none";
 	}
 }
 
@@ -57,6 +51,38 @@ function generate(){
 	changetext();
 	play();
 }
+
+window.addEventListener("popstate", function(event) {
+	resetPage();
+});
+
+window.addEventListener("pageshow", function(event) {
+    if (event.persisted) {
+		resetPage();
+    }
+});
+
+function resetPage() {
+	console.log("in resetPage");
+	var audio = document.getElementById('bgm');
+	audio.pause();
+	audio.currentTime = 0;
+	resetAllAnimations();
+	document.getElementById("playImg").style.opacity = 1;
+	document.getElementById("playButton").disabled=false;
+	document.getElementById("playButton").style.cursor="pointer";
+	changetext();
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+	document.getElementById("createLink").addEventListener("click", function() {
+		resetPage();
+	});
+
+	document.getElementById("title").addEventListener("click", function() {
+		resetPage();
+	});
+});
 
 function play() {
 	var audio = document.getElementById('bgm');
