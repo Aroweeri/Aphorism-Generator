@@ -212,6 +212,7 @@ async function copyLink() {
 	animation-play-state: paused;
 }
 #form {
+	flex:1;
 	margin-top:1rem;
 	text-align: center;
 	vertical-align: middle;
@@ -393,6 +394,15 @@ p {
 	gap:1rem;
 }
 
+#footer {
+	background-color:#1c1c1c;
+	width:100%;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	gap:1rem;
+}
+
 #mainPage {
 	height:100dvh;
 	display:flex;
@@ -439,9 +449,6 @@ a {
 				<a href="index.html">
 					<p id="createLink">Make an Aphorism</p>
 				</a>
-				<a href="http://www.github.com/aroweeri/Aphorism-Generator">
-					<img id="githubLink" src="GitHub_Invertocat_White_Clearspace.svg">
-				</a>
 			</div>
 		</div>
 
@@ -467,12 +474,23 @@ a {
 				</button>
 			</div>
 		</div>
+
 		
 		<div id="form">
 			<textarea rows="4" id="tb" class="formText" placeholder="What Was Said?"></textarea>
 			<input type="text" name="tb2" id="tb2" class="formText" placeholder="Who Said It?">
 			<input type="submit" value="Generate" class="formText" id="submit" onclick="generate()">
 		</div>
+
+		<div id="footer">
+			<a href="http://www.github.com/aroweeri/Aphorism-Generator">
+				<p>github</p>
+			</a>
+			<a href="https://web.archive.org/web/20250725155423/https://kazamatsuri.org/">
+				<p>kazamatsuri</p>
+			</a>
+		</div>
+
 	</div>
 
 </body>
