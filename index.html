@@ -87,7 +87,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	var bgm = document.getElementById("bgm");
 	var volume = document.getElementById("volume");
-	bgm.volume = volume.value;
+
+	if (window.matchMedia("(max-width: 768px)").matches) {
+		bgm.volume = 1.0;
+	} else {
+		bgm.volume = volume.value;
+	}
+
 });
 
 function play() {
@@ -163,6 +169,7 @@ function updateVolume() {
 		bgm.volume = volume.value;
 	});
 }
+
 
 
 </script>
@@ -482,7 +489,7 @@ a {
 				<button type="button" id="soundButton" onclick="toggleSound()">
 					<img src="sound-on.svg" id="soundImg"/>
 				</button>
-				<input type="range" id="volume" min="0" max="1" step="0.01" value="0.5" oninput="updateVolume()">
+				<input type="range" id="volume" class="desktop" min="0" max="1" step="0.01" value="0.5" oninput="updateVolume()">
 			</div>
 		</div>
 
